@@ -1,8 +1,12 @@
+
 import React, { useEffect } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
 import FeaturedSchemes from '@/components/FeaturedSchemes';
+import SuccessStories from '@/components/SuccessStories';
+import SchemeDetails from '@/components/SchemeDetails';
+import FAQ from '@/components/FAQ';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -20,6 +24,8 @@ const Index = () => {
       <main>
         <Hero />
         <FeaturedSchemes />
+        <SchemeDetails />
+        <SuccessStories />
         
         {/* Eligibility Section */}
         <section id="eligibility" className="py-20 bg-gradient-to-b from-white to-blue-50">
@@ -85,6 +91,8 @@ const Index = () => {
           </div>
         </section>
         
+        <FAQ />
+        
         {/* Resources Section */}
         <section id="resources" className="py-20 bg-white">
           <div className="container">
@@ -134,7 +142,7 @@ const Index = () => {
                   title: "Success Stories",
                   description: "Read about children who have benefited from these schemes",
                   icon: <Heart size={24} className="text-primary" />,
-                  link: "#stories"
+                  link: "#success-stories"
                 }
               ].map((item, i) => (
                 <Card key={i} className="transition-all hover:shadow-md hover:border-primary/20">

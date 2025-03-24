@@ -103,12 +103,14 @@ const Hero = () => {
       </div>
       
       {/* CSS for the grid pattern */}
-      <style jsx>{`
+      <style>
+        {`
         .bg-grid-pattern {
           background-image: radial-gradient(circle, #3b82f6 1px, transparent 1px);
           background-size: 30px 30px;
         }
-      `}</style>
+        `}
+      </style>
     </div>
   );
 };
