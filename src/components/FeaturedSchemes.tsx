@@ -1,37 +1,11 @@
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
+import { motion } from 'framer-motion';
 import SchemeCard, { SchemeCardProps } from './SchemeCard';
 import { Heart, Baby, Hospital, Stethoscope, PiggyBank } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 
 const FeaturedSchemes = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-slide-up');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-    
-    const childElements = sectionRef.current?.querySelectorAll('.scheme-card');
-    childElements?.forEach((child) => {
-      child.classList.add('opacity-0');
-      observer.observe(child);
-    });
-    
-    return () => {
-      childElements?.forEach((child) => {
-        observer.unobserve(child);
-      });
-    };
-  }, []);
-
   const schemes: SchemeCardProps[] = [
     {
       title: "Rajasthan Janani Shishu Suraksha Yojana",
@@ -126,9 +100,10 @@ const FeaturedSchemes = () => {
   ];
 
   return (
-    <section id="schemes" className="py-20 bg-white" ref={sectionRef}>
+    <section id="schemes" className="py-20 bg-white">
       <div className="container">
         <div className="text-center max-w-3xl mx-auto mb-16">
+          <Badge className="mb-4">Featured Programs</Badge>
           <h2 className="text-3xl md:text-4xl font-bold text-balance">Featured Health Schemes for Children</h2>
           <p className="mt-4 text-muted-foreground">
             These government-backed initiatives aim to improve healthcare access and outcomes for all children in Rajasthan.
@@ -137,13 +112,16 @@ const FeaturedSchemes = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {schemes.map((scheme, index) => (
-            <div 
-              key={index} 
-              className="scheme-card transition-all duration-500" 
-              style={{ transitionDelay: `${index * 100}ms` }}
+            <motion.div 
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              className="h-full"
             >
               <SchemeCard {...scheme} />
-            </div>
+            </motion.div>
           ))}
         </div>
         
