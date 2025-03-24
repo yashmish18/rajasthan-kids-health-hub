@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -7,7 +6,7 @@ import FeaturedSchemes from '@/components/FeaturedSchemes';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowRight, Check, MapPin, Phone, Info, Calendar, FileText } from 'lucide-react';
+import { ArrowRight, Check, MapPin, Phone, Info, Calendar, FileText, Heart } from 'lucide-react';
 
 const Index = () => {
   useEffect(() => {
