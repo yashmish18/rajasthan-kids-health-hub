@@ -1,5 +1,6 @@
 
 import React, { useEffect } from 'react';
+import { Heart, Baby, Hospital, Stethoscope, PiggyBank, MapPin, Phone, Info, Calendar, FileText } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
@@ -7,10 +8,12 @@ import FeaturedSchemes from '@/components/FeaturedSchemes';
 import SuccessStories from '@/components/SuccessStories';
 import SchemeDetails from '@/components/SchemeDetails';
 import FAQ from '@/components/FAQ';
+import ApplicationForms from '@/components/ApplicationForms';
+import RegionAvailability from '@/components/RegionAvailability';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowRight, Check, MapPin, Phone, Info, Calendar, FileText, Heart } from 'lucide-react';
+import { ArrowRight, Check } from 'lucide-react';
 
 const Index = () => {
   useEffect(() => {
@@ -25,6 +28,8 @@ const Index = () => {
         <Hero />
         <FeaturedSchemes />
         <SchemeDetails />
+        <RegionAvailability />
+        <ApplicationForms />
         <SuccessStories />
         
         {/* Eligibility Section */}
@@ -56,8 +61,8 @@ const Index = () => {
                       ))}
                     </div>
                     
-                    <Button className="mt-8 w-full">
-                      Check Detailed Eligibility
+                    <Button className="mt-8 w-full" asChild>
+                      <a href="#forms">Check Detailed Eligibility</a>
                     </Button>
                   </div>
                 </div>
@@ -118,7 +123,7 @@ const Index = () => {
                   title: "Find Health Centers",
                   description: "Locate nearby hospitals and health centers accepting scheme benefits",
                   icon: <MapPin size={24} className="text-primary" />,
-                  link: "#centers"
+                  link: "#region-availability"
                 },
                 {
                   title: "Upcoming Health Camps",
@@ -226,13 +231,18 @@ const Index = () => {
                   
                   <div className="bg-primary/5 p-8 md:p-10">
                     <h3 className="text-xl font-semibold mb-6">Send Us a Message</h3>
-                    <form className="space-y-4">
+                    <form className="space-y-4" onSubmit={(e) => {
+                      e.preventDefault();
+                      alert('Thank you for your message. We will contact you soon!');
+                      // In a real implementation, this would submit the form data
+                    }}>
                       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                         <div>
                           <label className="text-sm font-medium mb-1 block">Your Name</label>
                           <input 
                             type="text" 
                             className="w-full px-4 py-2 border border-muted rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50"
+                            required
                           />
                         </div>
                         <div>
@@ -240,6 +250,7 @@ const Index = () => {
                           <input 
                             type="tel" 
                             className="w-full px-4 py-2 border border-muted rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50"
+                            required
                           />
                         </div>
                       </div>
@@ -256,6 +267,7 @@ const Index = () => {
                         <label className="text-sm font-medium mb-1 block">District</label>
                         <select 
                           className="w-full px-4 py-2 border border-muted rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 bg-white"
+                          required
                         >
                           <option value="">Select your district</option>
                           <option value="jaipur">Jaipur</option>
@@ -271,10 +283,11 @@ const Index = () => {
                         <textarea 
                           rows={4}
                           className="w-full px-4 py-2 border border-muted rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50"
+                          required
                         ></textarea>
                       </div>
                       
-                      <Button className="w-full">
+                      <Button type="submit" className="w-full">
                         Submit Message
                       </Button>
                     </form>

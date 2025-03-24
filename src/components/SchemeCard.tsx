@@ -13,6 +13,11 @@ export interface SchemeCardProps {
   eligibility: string;
   benefits: string[];
   icon: React.ReactNode;
+  regionSpecific?: {
+    urban: boolean;
+    rural: boolean;
+    remote: boolean;
+  };
 }
 
 const SchemeCard: React.FC<SchemeCardProps> = ({
@@ -21,7 +26,8 @@ const SchemeCard: React.FC<SchemeCardProps> = ({
   category,
   eligibility,
   benefits,
-  icon
+  icon,
+  regionSpecific = { urban: true, rural: true, remote: true }
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -80,6 +86,28 @@ const SchemeCard: React.FC<SchemeCardProps> = ({
                   </motion.li>
                 ))}
               </ul>
+            </div>
+            
+            {/* Region availability */}
+            <div>
+              <h4 className="text-sm font-medium mb-1">Region Availability</h4>
+              <div className="flex flex-wrap gap-2">
+                {regionSpecific.urban && (
+                  <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200">
+                    Urban
+                  </Badge>
+                )}
+                {regionSpecific.rural && (
+                  <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200">
+                    Rural
+                  </Badge>
+                )}
+                {regionSpecific.remote && (
+                  <Badge variant="outline" className="bg-purple-50 text-purple-700 border-purple-200">
+                    Remote
+                  </Badge>
+                )}
+              </div>
             </div>
           </div>
         </CardContent>

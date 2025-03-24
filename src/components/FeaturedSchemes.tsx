@@ -44,7 +44,12 @@ const FeaturedSchemes = () => {
         "Free transport to and from health facilities",
         "Free treatment for sick newborns"
       ],
-      icon: <Heart size={24} />
+      icon: <Heart size={24} />,
+      regionSpecific: {
+        urban: true,
+        rural: true,
+        remote: true
+      }
     },
     {
       title: "Rashtriya Bal Swasthya Karyakram",
@@ -57,7 +62,12 @@ const FeaturedSchemes = () => {
         "Comprehensive health checkups in schools",
         "Early intervention services"
       ],
-      icon: <Baby size={24} />
+      icon: <Baby size={24} />,
+      regionSpecific: {
+        urban: true,
+        rural: true,
+        remote: false
+      }
     },
     {
       title: "Mukhyamantri Chiranjeevi Yojana",
@@ -70,7 +80,12 @@ const FeaturedSchemes = () => {
         "Special focus on children's treatments",
         "Coverage for COVID-19 treatment"
       ],
-      icon: <PiggyBank size={24} />
+      icon: <PiggyBank size={24} />,
+      regionSpecific: {
+        urban: true,
+        rural: true,
+        remote: true
+      }
     },
     {
       title: "Rajasthan Nirogi Ladla",
@@ -83,7 +98,12 @@ const FeaturedSchemes = () => {
         "Free surgical correction of congenital heart defects",
         "Follow-up care and monitoring"
       ],
-      icon: <Stethoscope size={24} />
+      icon: <Stethoscope size={24} />,
+      regionSpecific: {
+        urban: true,
+        rural: true,
+        remote: false
+      }
     },
     {
       title: "Bhamashah Swasthya Bima Yojana",
@@ -96,7 +116,12 @@ const FeaturedSchemes = () => {
         "Free outpatient services",
         "Dedicated pediatric treatments covered"
       ],
-      icon: <Hospital size={24} />
+      icon: <Hospital size={24} />,
+      regionSpecific: {
+        urban: true,
+        rural: true,
+        remote: true
+      }
     }
   ];
 
